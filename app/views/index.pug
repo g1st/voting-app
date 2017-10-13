@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h3 if user.logged hello, username
+  
+  h3 if not:
+  
+  p
+    a(href='/') Register
+  p
+    a(href='/') View polls
+  

@@ -1,0 +1,34 @@
+{
+  "name": "voting-app",
+  "version": "1.0.0",
+  "description": "Voting app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vote",
+    "voting"
+  ],
+  "author": "Gintaras Stankus",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-watch": "^4.3.11",
+    "postcss-import": "^11.0.0",
+    "postcss-nested": "^2.1.2"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "normalize.css": "^7.0.0",
+    "pug": "^2.0.0-rc.4"
+  }
+}
