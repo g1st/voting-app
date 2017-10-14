@@ -1,10 +1,16 @@
-doctype html
-html
-  head
-    meta(charset="utf-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(name="keywords" content="Vote, voting, vote app, voting app, poll, polls, create polls")
-    meta(name="description" content="Vote for various polls or log in and create your own!")
-    title= title
-  body
-    h1= message
+extends layout
+
+block content
+  if user
+    h1 Hello, #{user.username}!
+    
+    h3 Here are your 
+      a(href='/my_polls') polls
+  else
+    h1 Hey, stranger!
+    h2
+      | You can vote 
+      a(href='/polls') here
+      |  or 
+      a(href='/oauth/register') register
+      |  and create your own polls!

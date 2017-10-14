@@ -1,12 +1,16 @@
 extends layout
 
 block content
-  h3 if user.logged hello, username
-  
-  h3 if not:
-  
-  p
-    a(href='/') Register
-  p
-    a(href='/') View polls
-  
+  if user
+    h1 Hello, #{user.username}!
+    
+    h3 Here are your 
+      a(href='/my_polls') polls
+  else
+    h1 Hey, stranger!
+    h2
+      | You can vote 
+      a(href='/polls') here
+      |  or 
+      a(href='/oauth/register') register
+      |  and create your own polls!
