@@ -6,9 +6,13 @@ var router = require('express').Router();
 var poll_controller = require('../controllers/pollController');
 
 // show all polls
-router.get('polls', poll_controller.polls);
+router.get('/', poll_controller.polls);
 
 // show user made polls
-router.get('my_polls', poll_controller.my_polls);
+router.get('/mine', poll_controller.my_polls);
+
+router.get('/new_poll', poll_controller.get_new_poll);
+
+router.post('/new_poll', poll_controller.post_new_poll);
 
 module.exports = router;

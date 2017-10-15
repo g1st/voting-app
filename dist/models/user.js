@@ -17,7 +17,7 @@ userSchema.methods.generateHash = function (password) {
   return bcrypt.hashSync(password, salt, null);
 };
 
-// checking if password is valid
+// checking if password is valid (named function for proper this scope)
 userSchema.methods.validPassword = function validPassword(password) {
   return bcrypt.compareSync(password, this.password);
 };

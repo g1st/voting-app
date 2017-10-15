@@ -26,7 +26,8 @@ app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // connect to db
-mongoose.connect(process.env.DB_URI);
+mongoose.connect('mongodb://localhost:27017/vote');
+// mongoose.connect(process.env.DB_URI || 'mongodb://localhost:27017/vote');
 
 // setup view engine
 app.set('views', './views');

@@ -7,7 +7,9 @@ html
     meta(name="description" content="Vote for various polls or log in and create your own!")
     title= title
     link(rel="stylesheet", type="text/css", href="/styles/styles.css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js")
   body
     include nav.pug
     div(class="main")
       block content
+    script(src="../assets/scripts/chart.js")

@@ -506,3 +506,38 @@ body {
   position: relative;
   padding-top: 4rem;
 }
+
+.chart__size {
+    margin: 0 auto;
+    height: 420px !important;
+  }
+
+.form input {
+    display: inline-block;
+  }
+
+.form input {
+    width: 400px;
+  }
+
+.form-increaser {
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    margin-top: -6px;
+    margin-left: 6px;
+    font-weight: 800;
+    font-size: 2rem;
+  }
+
+.form-decreaser {
+    cursor: pointer;
+    color: red;
+    display: inline-block;
+    position: absolute;
+    margin-top: -6px;
+    margin-left: 8px;
+    font-weight: 800;
+    font-size: 2rem;
+  }

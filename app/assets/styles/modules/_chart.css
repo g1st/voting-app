@@ -1,0 +1,6 @@
+.chart {
+  &__size {
+    margin: 0 auto;
+    height: 420px !important;
+  }
+}

@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Your polls
+  h2
+    a(href='/polls/new_poll') New Poll
+  div(class="chart__size")
+    canvas(id="pieChart" width="420" height="420")
