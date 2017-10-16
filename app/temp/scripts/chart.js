@@ -1,4 +1,9 @@
+const polls = require('../../models/poll');
+
 const ctx = document.getElementById('pieChart');
+// const ctx2 = document.getElementById('pieChart2');
+
+console.log(polls);
 
 const pieChart = new Chart(ctx, {
   type: 'pie',

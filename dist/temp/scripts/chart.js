@@ -1,6 +1,11 @@
 'use strict';
 
+var polls = require('../../models/poll');
+
 var ctx = document.getElementById('pieChart');
+// const ctx2 = document.getElementById('pieChart2');
+
+console.log(polls);
 
 var pieChart = new Chart(ctx, {
   type: 'pie',

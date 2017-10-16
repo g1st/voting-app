@@ -3,7 +3,7 @@ extends layout
 block content
   h1 Create a new poll.
   div(class="form")
-    form(id="", method="post", action="new_poll")
+    form(id="", method="post", action="/polls/mine")
       label Title:
       br
       input(type="text" name="title" placeholder="Enter poll title")

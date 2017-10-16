@@ -7,7 +7,12 @@ exports.polls = function (req, res) {
 };
 
 exports.my_polls = function (req, res) {
-  res.render('my_polls', { title: 'My Polls', user: req.user });
+  Poll.find({ creator: req.user.username }).select('_id creator title data votedIPs').then(function (polls) {
+    if (polls.length > 0) {
+      return res.render('my_polls', { title: 'My Polls', user: req.user, polls: polls });
+    }
+    return res.render('my_polls', { title: 'My Polls', user: req.user });
+  });
 };
 
 exports.get_new_poll = function (req, res) {
@@ -17,7 +22,7 @@ exports.get_new_poll = function (req, res) {
 exports.post_new_poll = function (req, res) {
   var poll = new Poll();
 
-  var IP = req.headers["x-forwarded-for"] || req.connection.remoteAddress.split(',')[0];
+  var IP = req.headers['x-forwarded-for'] || req.connection.remoteAddress.split(',')[0];
   var userChoices = req.body.choices.split(',');
 
   poll.title = req.body.title;
@@ -29,6 +34,9 @@ exports.post_new_poll = function (req, res) {
   });
 
   poll.save().then(function () {
-    res.render('my_polls', { title: 'My Polls', user: req.user });
+    Poll.find({ creator: req.user.username }).select('_id creator title data votedIPs').then(function (polls) {
+      res.render('my_polls', { title: 'My Polls', user: req.user, polls: polls });
+      // res.render('my_polls', { title: 'My Polls', user: req.user });
+    });
   });
 };
