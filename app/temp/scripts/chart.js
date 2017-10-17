@@ -1,9 +1,19 @@
-const polls = require('../../models/poll');
+const listPolls = (data) => {
+  const container = document.getElementById('polls-container');
+  data.forEach((poll) => {
+    console.log(poll);
+  });
+};
 
-const ctx = document.getElementById('pieChart');
+// const ctx = document.getElementById('pieChart');
 // const ctx2 = document.getElementById('pieChart2');
-
-console.log(polls);
+axios.get('/polls/mine')
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const pieChart = new Chart(ctx, {
   type: 'pie',
