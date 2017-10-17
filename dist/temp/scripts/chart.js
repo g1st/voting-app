@@ -1,11 +1,19 @@
 'use strict';
 
-var polls = require('../../models/poll');
+var listPolls = function listPolls(data) {
+  var container = document.getElementById('polls-container');
+  data.forEach(function (poll) {
+    console.log(poll);
+  });
+};
 
-var ctx = document.getElementById('pieChart');
+// const ctx = document.getElementById('pieChart');
 // const ctx2 = document.getElementById('pieChart2');
-
-console.log(polls);
+axios.get('/polls/mine').then(function (res) {
+  console.log(res);
+}).catch(function (err) {
+  console.log(err);
+});
 
 var pieChart = new Chart(ctx, {
   type: 'pie',

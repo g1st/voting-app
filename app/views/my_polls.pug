@@ -5,7 +5,7 @@ block content
   h2
     a(href='/polls/new_poll') New Poll
   h2 Your polls
-  div(class="chart__size")
+  div(id="polls-container" class="chart__size")
     canvas(id="pieChart" width="420" height="420")
     canvas(id="pieChart2" width="420" height="420")
     if polls
@@ -13,3 +13,4 @@ block content
       
     else
       h3 You dont have any polls.
+    
