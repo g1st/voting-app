@@ -15,4 +15,5 @@ minus_one.addEventListener('click', removeFields);
 
 const removeFields = () => {
   console.log('just clicked destroy');
+  
 };
