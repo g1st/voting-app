@@ -15,6 +15,14 @@ exports.my_polls = function (req, res) {
   });
 };
 
+exports.api_my_polls = function (req, res) {
+  Poll.find({ creator: req.user.username }).select('_id creator title data votedIPs').then(function (poll) {
+    res.status(200).send(poll);
+  }).catch(function (err) {
+    res.status(400).send(err);
+  });
+};
+
 exports.get_new_poll = function (req, res) {
   res.render('new_poll', { title: 'Create new poll', user: req.user });
 };

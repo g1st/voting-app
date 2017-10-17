@@ -1,16 +1,11 @@
 extends layout
 
 block content
-  h1 Your polls
   h2
     a(href='/polls/new_poll') New Poll
-  h2 Your polls
-  div(id="polls-container" class="chart__size")
-    canvas(id="pieChart" width="420" height="420")
-    canvas(id="pieChart2" width="420" height="420")
     if polls
-      h3 Polls
-      
+      h2 Your polls
+      div(id="polls-container" class="chart__size")
     else
       h3 You dont have any polls.
-    
+  script(src="/scripts/chart.js")

@@ -13,6 +13,16 @@ exports.my_polls = (req, res) => {
   });
 };
 
+exports.api_my_polls = (req, res) => {
+  Poll.find({ creator: req.user.username }).select('_id creator title data votedIPs')
+    .then((poll) => {
+      res.status(200).send(poll);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+};
+
 exports.get_new_poll = (req, res) => {
   res.render('new_poll', { title: 'Create new poll', user: req.user });
 };
