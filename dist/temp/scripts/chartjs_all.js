@@ -1,10 +1,10 @@
 'use strict';
 
-var container = document.getElementById('polls-container');
+var container = document.getElementById('all_polls');
 
 var listPolls = function listPolls(data, callback) {
   data.forEach(function (poll) {
-    container.innerHTML += '<canvas id="' + poll._id + '" width="420" height="420"></canvas><div id="view' + poll._id + '" class="poll_view"><a href="/polls/' + poll._id + '">View</a></div>';
+    container.innerHTML += '<canvas id="' + poll._id + '" width="420" height="420"></canvas>';
   });
   callback(data);
 };
@@ -39,14 +39,14 @@ var populateChart = function populateChart(data) {
         }]
       },
       options: {
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false
       }
     });
   });
 };
 
-axios.get('/polls/api/mine').then(function (res) {
+axios.get('/polls/api/all').then(function (res) {
   listPolls(res.data, populateChart);
 }).catch(function (err) {
   console.log(err);

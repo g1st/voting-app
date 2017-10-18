@@ -1,8 +1,8 @@
-const container = document.getElementById('polls-container');
+const container = document.getElementById('all_polls');
 
 const listPolls = (data, callback) => {
   data.forEach((poll) => {
-    container.innerHTML += '<canvas id="' + poll._id +  '" width="420" height="420"></canvas><div id="view' + poll._id + '" class="poll_view"><a href="/polls/' + poll._id + '">View</a></div>';
+    container.innerHTML += '<canvas id="' + poll._id +  '" width="420" height="420"></canvas>';
   });
   callback(data);
 };
@@ -56,7 +56,7 @@ const populateChart = (data) => {
         }],
       },
       options: {
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false,
       },
     });
@@ -64,7 +64,7 @@ const populateChart = (data) => {
   });
 };
 
-axios.get('/polls/api/mine')
+axios.get('/polls/api/all')
   .then((res) => {
     listPolls(res.data, populateChart);
   })

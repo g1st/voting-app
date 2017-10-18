@@ -27,4 +27,9 @@ router.get('/new_poll', isLoggedIn, poll_controller.get_new_poll);
 
 router.post('/mine', isLoggedIn, poll_controller.post_new_poll);
 
+router.get('/api/all', poll_controller.api_all_polls);
+
+// show single poll
+router.get('/:id', poll_controller.poll);
+
 module.exports = router;

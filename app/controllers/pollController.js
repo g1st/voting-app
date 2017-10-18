@@ -4,6 +4,12 @@ exports.polls = (req, res) => {
   res.render('polls', { title: 'Polls', user: req.user });
 };
 
+exports.poll = (req, res) => {
+  Poll.find({ _id: req.params.id }).select('_id creator title data votedIPs').then((poll) => {
+    res.render('poll', { title: poll.title, user: req.user, poll: poll[0] });
+  });
+};
+
 exports.my_polls = (req, res) => {
   Poll.find({ creator: req.user.username }).select('_id creator title data votedIPs').then((polls) => {
     if (polls.length > 0) {
@@ -15,6 +21,16 @@ exports.my_polls = (req, res) => {
 
 exports.api_my_polls = (req, res) => {
   Poll.find({ creator: req.user.username }).select('_id creator title data votedIPs')
+    .then((poll) => {
+      res.status(200).send(poll);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+};
+
+exports.api_all_polls = (req, res) => {
+  Poll.find().select('_id title data votedIPs')
     .then((poll) => {
       res.status(200).send(poll);
     })

@@ -9,8 +9,10 @@ block content
   else
     h1 Hey, stranger!
     h2
-      | You can vote 
-      a(href='/polls') here
-      |  or 
+      | Vote on existing polls or 
       a(href='/oauth/register') register
-      |  and create your own polls!
+      |  and create your own!
+  div(class="cont")
+    div(id="all_polls")
+  script(src="/scripts/chartjs_all.js" type="text/javascript")
+      
