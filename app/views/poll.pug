@@ -2,47 +2,25 @@ extends layout
 
 block content
   h3 Single poll page
-  p= poll
   div(class="polls-container")
+    div(id="" class="vote")
+      form(id="", method="post", action="")
+        each val in poll.data 
+          input(type="radio" name=val.label)
+          span= val.label
+          br
+        input(type="submit")
     canvas(id=poll.id width="420px" height="420px")
-  //- script(src="/scripts/singlechart.js" type="text/javascript")
-  script.
-    
-    const ctx = document.getElementById('#{poll._id}');
-    
-    const pieChart = new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: [#{poll.data.map(x => x.label.toString())}],
-        datasets: [{
-          label: #{poll.title},
-          data: [#{poll.data.map(x => x.count)}],
-          borderColor: 'rgba(0, 0, 0, 0.4)',
-          backgroundColor: [
-            'rgba(255,99,132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
-            'rgba(60, 180, 75, 1)',
-            'rgba(128, 128, 0, 1)',
-            'rgba(230, 190, 255, 1)',
-            'rgba(128, 0, 0, 1)',
-            'rgba(70, 240, 240, 1)',
-            'rgba(255, 215, 180, 1)',
-            'rgba(0, 128, 128, 1)',
-            'rgba(170, 110, 40, 1)',
-            'rgba(245, 130, 48, 1)',
-            'rgba(0, 130, 200, 1)',
-            'rgba(128, 128, 128, 1)',
-            'rgba(255, 250, 200, 1)',
-          ],
-          borderWidth: 1,
-        }],
-      },
-      options: {
-        responsive: false,
-        maintainAspectRatio: false,
-      },
-    });
+    div(id="" class="add_option")
+      form(id="", method="post", action="/add/" + poll.id)
+        label Don't like present options?
+        br
+        input(type="text" placeholder="Add your option")
+        button(type="submit") Add
+    div(id="" class="delete") 
+      form(id="", method="post", action="/delete/" + poll.id)
+        input(id="" type="hidden" name="delete_poll" required="true" value=poll.id)
+        button(type=Submit) Delete
+  script(type="text/javascript").
+    const poll = !{JSON.stringify(poll)};
+  script(src="/scripts/singlechart.js" type="text/javascript")

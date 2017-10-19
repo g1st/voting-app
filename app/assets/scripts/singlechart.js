@@ -1,12 +1,15 @@
+// console.log(poll);
+// console.log(poll);
+// console.log(poll);
 const ctx = document.getElementById(poll._id);
 
-  const pieChart = new Chart(ctx, {
+const pieChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: beautiful(poll).labels, // labels
+    labels: poll.data.map(obj => obj.label), // labels
     datasets: [{
-      label: beautiful(poll).title, // title
-      data: beautiful(poll).data, // data
+      label: poll.title, // title
+      data: poll.data.map(obj => obj.count), // data
       borderColor: 'rgba(0, 0, 0, 0.4)',
       backgroundColor: [
         'rgba(255,99,132, 1)',
@@ -32,7 +35,7 @@ const ctx = document.getElementById(poll._id);
     }],
   },
   options: {
-    responsive: true,
+    responsive: false,
     maintainAspectRatio: false,
   },
 });

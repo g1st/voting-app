@@ -6,7 +6,7 @@ exports.polls = (req, res) => {
 
 exports.poll = (req, res) => {
   Poll.find({ _id: req.params.id }).select('_id creator title data votedIPs').then((poll) => {
-    res.render('poll', { title: poll.title, user: req.user, poll: poll[0] });
+    return res.render('poll', { title: poll.title, user: req.user, poll: poll[0] });
   });
 };
 
@@ -63,4 +63,16 @@ exports.post_new_poll = (req, res) => {
     // res.render('my_polls', { title: 'My Polls', user: req.user });
     });
   });
+};
+
+exports.post_poll = (req, res) => {
+  res.send('voting');
+};
+
+exports.post_add_option = (req, res) => {
+  res.send('adding option');
+};
+
+exports.post_delete_poll = (req, res) => {
+  res.send('deleting');
 };

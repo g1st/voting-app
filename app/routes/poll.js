@@ -32,4 +32,13 @@ router.get('/api/all', poll_controller.api_all_polls);
 // show single poll
 router.get('/:id', poll_controller.poll);
 
+// vote for a poll
+router.post('/:id', poll_controller.post_poll);
+
+// add option to a poll
+router.post('/add/:id', poll_controller.post_add_option);
+
+// delete poll
+router.post('/delete/:id', poll_controller.post_delete_poll);
+
 module.exports = router;
