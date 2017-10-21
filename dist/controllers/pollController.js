@@ -22,7 +22,7 @@ exports.my_polls = function (req, res) {
 };
 
 exports.api_my_polls = function (req, res) {
-  Poll.find({ creator: req.user.username }).select('_id creator title data votedIPs').then(function (poll) {
+  Poll.find({ creator: req.user.username }).sort({ '$natural': -1 }).select('_id creator title data votedIPs').then(function (poll) {
     res.status(200).send(poll);
   }).catch(function (err) {
     res.status(400).send(err);
@@ -44,12 +44,10 @@ exports.get_new_poll = function (req, res) {
 exports.post_new_poll = function (req, res) {
   var poll = new Poll();
 
-  var IP = req.headers['x-forwarded-for'] || req.connection.remoteAddress.split(',')[0];
-  var userChoices = req.body.choices.split(',');
+  var userChoices = req.body.choices.split(', ');
 
   poll.title = req.body.title;
   poll.creator = req.user.username;
-  poll.votedIPs.push(IP);
 
   userChoices.forEach(function (label) {
     poll.data.push({ label: label });
@@ -58,19 +56,74 @@ exports.post_new_poll = function (req, res) {
   poll.save().then(function () {
     Poll.find({ creator: req.user.username }).select('_id creator title data votedIPs').then(function (polls) {
       res.render('my_polls', { title: 'My Polls', user: req.user, polls: polls });
-      // res.render('my_polls', { title: 'My Polls', user: req.user });
     });
   });
 };
 
 exports.post_poll = function (req, res) {
-  res.send('voting');
-};
+  var IP = req.headers['x-forwarded-for'] || req.connection.remoteAddress.split(',')[0];
 
-exports.post_add_option = function (req, res) {
-  res.send('adding option');
-};
+  Poll.findOne({
+    _id: req.params.id
+  }).then(function (poll) {
+    // user delets poll
+    if (req.body.delete && req.user) {
+      Poll.findOneAndRemove({
+        _id: req.params.id
+      }).then(function (poll) {
+        return res.render('poll', {
+          title: 'Poll ' + poll.title + ' deleted',
+          user: req.user,
+          deleted: true
+        });
+      }).catch(function (err) {
+        return console.error(err);
+      });
+    } else {
+      // check if user has not yet voted
+      if (poll.votedIPs.some(function (votedIP) {
+        return votedIP === IP;
+      })) {
+        return res.render('poll', {
+          title: 'Poll: ' + poll.title,
+          user: req.user,
+          poll: poll,
+          message: 'You have already voted (' + IP + ')'
+        });
+      }
 
-exports.post_delete_poll = function (req, res) {
-  res.send('deleting');
+      // user voting
+      if (req.body.vote) {
+        Poll.findOneAndUpdate({
+          _id: req.params.id,
+          'data._id': req.body.vote
+        }, { $inc: { 'data.$.count': 1 }, $push: { votedIPs: IP } }, { new: true }).then(function (poll) {
+          return res.render('poll', {
+            title: 'Poll: ' + poll.title,
+            user: req.user,
+            poll: poll
+          });
+        }).catch(function (err) {
+          return res.status(400).send(err);
+        });
+      }
+
+      // user adding extra label
+      if (req.body.label) {
+        Poll.findOneAndUpdate({
+          _id: req.params.id
+        }, { $push: { 'data': { label: req.body.label, count: 1 } }, votedIPs: IP }, { new: true }).then(function (poll) {
+          return res.render('poll', {
+            title: 'Poll: ' + poll.title,
+            user: req.user,
+            poll: poll
+          });
+        }).catch(function (err) {
+          return res.status(400).send(err);
+        });
+      }
+    }
+  }).catch(function (err) {
+    throw err;
+  });
 };

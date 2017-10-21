@@ -1,26 +1,32 @@
 extends layout
 
 block content
-  h3 Single poll page
-  div(class="polls-container")
-    div(id="" class="vote")
-      form(id="", method="post", action="")
-        each val in poll.data 
-          input(type="radio" name=val.label)
-          span= val.label
+  if deleted
+    h3= title
+  else
+    if message
+      h2= message
+    h1= poll.title
+    div(class="polls-container")
+      div(id="" class="vote")
+        form(id="", method="post", action="")
+          each val in poll.data 
+            input(type="radio" name="vote" value=val._id required)
+            span= val.label
+            br
+          button(type="submit") Submit
+      canvas(id=poll.id width="420px" height="420px")
+      div(id="" class="add_option")
+        form(id="", method="post", action="")
+          label Don't like present options?
           br
-        input(type="submit")
-    canvas(id=poll.id width="420px" height="420px")
-    div(id="" class="add_option")
-      form(id="", method="post", action="/add/" + poll.id)
-        label Don't like present options?
-        br
-        input(type="text" placeholder="Add your option")
-        button(type="submit") Add
-    div(id="" class="delete") 
-      form(id="", method="post", action="/delete/" + poll.id)
-        input(id="" type="hidden" name="delete_poll" required="true" value=poll.id)
-        button(type=Submit) Delete
-  script(type="text/javascript").
-    const poll = !{JSON.stringify(poll)};
-  script(src="/scripts/singlechart.js" type="text/javascript")
+          input(type="text" placeholder="Add your option" name="label" required)
+          button(type="submit") Add
+        if (user && poll.creator == user.username)
+          div(id="" class="delete") 
+            form(id="", method="post", action="")
+              input(id="" type="hidden" name="delete" required="true" value=poll.id)
+              button(type=Submit) Delete
+    script(type="text/javascript").
+      const poll = !{JSON.stringify(poll)};
+    script(src="/scripts/singlechart.js" type="text/javascript")

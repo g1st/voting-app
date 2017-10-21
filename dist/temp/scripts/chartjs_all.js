@@ -4,7 +4,7 @@ var container = document.getElementById('all_polls');
 
 var listPolls = function listPolls(data, callback) {
   data.forEach(function (poll) {
-    container.innerHTML += '<canvas id="' + poll._id + '" width="420" height="420"></canvas>';
+    container.innerHTML += '<canvas id="' + poll._id + '" width="420" height="420"></canvas><div id="view' + poll._id + '" class="poll_view"><a href="/polls/' + poll._id + '">View</a></div>';
   });
   callback(data);
 };

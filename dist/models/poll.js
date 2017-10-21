@@ -10,12 +10,14 @@ var pollSchema = new Schema({
   title: String,
   votedIPs: Array,
   data: [{
-    label: String,
+    label: {
+      type: String,
+      trim: true
+    },
     count: {
       type: Number,
       default: 0
-    },
-    _id: false
+    }
   }]
 });
 
