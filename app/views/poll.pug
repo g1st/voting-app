@@ -7,6 +7,7 @@ block content
     if message
       h2= message
     h1= poll.title
+    a(id="share" class="twitter-share-button" href="https://twitter.com/intent/tweet?text=" + poll.title + "&url=https://g1st-voting.herokuapp.com/polls/" + poll._id target="_blank") Tweet
     div(class="polls-container")
       div(id="" class="vote")
         form(id="", method="post", action="")

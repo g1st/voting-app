@@ -1,8 +1,0 @@
-.site-header {
-  z-index: 2;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  overflow: hidden;
-  background-color: #333;
-}

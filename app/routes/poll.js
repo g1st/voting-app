@@ -21,7 +21,7 @@ router.get('/', poll_controller.polls);
 router.get('/mine', isLoggedIn, poll_controller.my_polls);
 
 // API user polls
-router.get('/api/mine', poll_controller.api_my_polls);
+router.get('/api/mine', isLoggedIn, poll_controller.api_my_polls);
 
 router.get('/new_poll', isLoggedIn, poll_controller.get_new_poll);
 

@@ -1,6 +1,9 @@
-// console.log(poll);
-// console.log(poll);
-// console.log(poll);
+const share = document.getElementById('share');
+share.addEventListener('click', () => {
+  window.open(share.href, '_blank', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
+  return false;
+});
+
 const ctx = document.getElementById(poll._id);
 
 const pieChart = new Chart(ctx, {
