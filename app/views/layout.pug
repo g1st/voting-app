@@ -10,6 +10,10 @@ html
     script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js")
     script(src="https://unpkg.com/axios/dist/axios.min.js")
   body
-    include nav.pug
-    div(class="main")
-      block content
+    div(class="grid")
+      div(class="grid__header")
+        include nav.pug
+      div(class="main grid__main")
+        block content
+      div(class="grid__footer")
+        include footer.pug

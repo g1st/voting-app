@@ -1,0 +1,30 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px auto 40px;
+  grid-auto-rows: minmax(40px, auto);
+  grid-gap: 10px;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  &__header {
+    grid-column: 1 / 2;
+    border: 1px solid;
+    background: #000;
+    padding: 20px;
+    position: fixed;
+  }
+
+  &__main {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  &__footer{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    background-color: #333;
+    color: #fff;
+  }
+
+}
