@@ -1,0 +1,21 @@
+.features {
+
+
+  &__one{
+    background: yellow;
+    padding: 40px;
+
+  }
+
+  &__two{
+    background: green;
+    padding: 40px;
+
+  }
+
+  &__three{
+    background: red;
+    padding: 40px;
+
+  }
+}

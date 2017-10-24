@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  if polls
+    h2 Your polls
+    div(id="polls-container" class="chart__size")
+  else
+    h3 You dont have any polls.
+  script(src="/scripts/chart.js" type="text/javascript")

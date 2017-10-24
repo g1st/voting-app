@@ -626,15 +626,3 @@ body {
     padding: 40px;
 
   }
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.flex-container__list {
-    background-color: green;
-    width: 500px;
-    padding: 20px;
-  }

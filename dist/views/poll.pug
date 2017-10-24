@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  if deleted
+    h3= title
+  else
+    if message
+      h2= message
+    h1= poll.title
+    a(id="share" class="twitter-share-button" href="https://twitter.com/intent/tweet?text=" + poll.title + "&url=https://g1st-voting.herokuapp.com/polls/" + poll._id target="_blank") Tweet
+    div(class="polls-container")
+      div(id="" class="vote")
+        form(id="", method="post", action="")
+          each val in poll.data 
+            input(type="radio" name="vote" value=val._id required)
+            span= val.label
+            br
+          button(type="submit") Submit
+      canvas(id=poll.id width="420px" height="420px")
+      div(id="" class="add_option")
+        form(id="", method="post", action="")
+          label Don't like present options?
+          br
+          input(type="text" placeholder="Add your option" name="label" required)
+          button(type="submit") Add
+        if (user && poll.creator == user.username)
+          div(id="" class="delete") 
+            form(id="", method="post", action="")
+              input(id="" type="hidden" name="delete" required="true" value=poll.id)
+              button(type=Submit) Delete
+    script(type="text/javascript").
+      const poll = !{JSON.stringify(poll)};
+    script(src="/scripts/singlechart.js" type="text/javascript")
