@@ -1,5 +1,35 @@
 .main {
   position: relative;
-  padding-top: 2rem;
   background-color: #eee;
+  /*background-image: url('/images/coffee-bg.jpeg');*/
+  /*background-size: cover;
+  background-attachment: fixed;*/
+
+  @media screen and (min-width: 560px) {
+    padding-top: 2rem;
+
+  }
+
+  &__greeting {
+    margin-left: 20px;
+    font-size: 1.35rem;
+    @media screen and (min-width: 560px) {
+      font-size: 1.75rem;
+      font-weight: 250;
+    }
+  }
+
+  &__text {
+    margin-left: 20px;
+    font-size: 1.15rem;
+
+    &-error {
+      color: red;
+    }
+
+    @media screen and (min-width: 560px) {
+      font-size: 1.4rem;
+      font-weight: 200;
+    }
+  }
 }

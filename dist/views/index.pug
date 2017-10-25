@@ -2,11 +2,11 @@ extends layout
 
 block content
   if user
-    h1 Hello, #{user.username}!
+    h1(class="main__greeting") Hello, #{user.username}!
 
   else
-    h1 Hey, stranger!
-    h2
+    h1(class="main__greeting") Hey, stranger!
+    h2(class="main__text")
       | Vote on existing polls or 
       a(href='/oauth/register') register
       |  and create your own!

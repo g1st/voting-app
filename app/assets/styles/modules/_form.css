@@ -7,26 +7,12 @@
     width: 400px;
   }
 
-  &-increaser {
-    color: green;
-    cursor: pointer;
-    display: inline-block;
-    position: absolute;
-    margin-top: -6px;
-    margin-left: 6px;
-    font-weight: 800;
-    font-size: 2rem;
-  }
+  &__login {
+    margin: 10px 5px;
 
-  &-decreaser {
-    cursor: pointer;
-    color: red;
-    display: inline-block;
-    position: absolute;
-    margin-top: -6px;
-    margin-left: 8px;
-    font-weight: 800;
-    font-size: 2rem;
+    @media screen and (min-width: 560px) {
+      margin: 20px;
+    }
   }
 
 }

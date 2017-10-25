@@ -1,6 +1,29 @@
 .chart {
+
   &__size {
     margin: 0 auto;
     height: 420px !important;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  &__view {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    background: lightgreen;
+    margin-top: 10px;
+    color: #333;
+
+  }
+  &__view:hover {
+    background: green;
+    a {
+      color: #eee;
+    }
   }
 }

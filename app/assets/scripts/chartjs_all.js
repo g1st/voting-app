@@ -2,7 +2,7 @@ const container = document.getElementById('all_polls');
 
 const listPolls = (data, callback) => {
   data.forEach((poll) => {
-    container.innerHTML += '<div class="flex-container__list">' + poll.title + '<canvas id="' + poll._id +  '" width="420" height="420"></canvas><div id="view' + poll._id + '" class="poll_view"><a href="/polls/' + poll._id + '">View</a></div></div>';
+    container.innerHTML += '<div class="flex-container__list"><div class="chart__title">' + poll.title + '</div><canvas id="' + poll._id +  '" width="420" height="420"></canvas><div id="view' + poll._id + '" class="chart__view"><a href="/polls/' + poll._id + '">View</a></div>';
   });
   callback(data);
 };
@@ -60,7 +60,6 @@ const populateChart = (data) => {
         maintainAspectRatio: false,
       },
     });
-
   });
 };
 
