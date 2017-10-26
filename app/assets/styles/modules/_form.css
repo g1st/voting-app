@@ -1,4 +1,12 @@
 .form {
+  text-align: center;
+
+  @media screen and (min-width: 560px) {
+    text-align: left;
+    margin-left: 60px;
+    margin-bottom: 40px;
+  }
+
   input {
     display: inline-block;
   }
@@ -13,6 +21,22 @@
     @media screen and (min-width: 560px) {
       margin: 20px;
     }
+  }
+
+  &__voting {
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__option {
+    margin-right: 15px;
+    margin-bottom: 10px;
+  }
+
+  &__add_option {
+    text-align: center;
+    padding-top: 50px;
+    margin-bottom: 50px;
   }
 
 }

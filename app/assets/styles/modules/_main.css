@@ -1,21 +1,27 @@
 .main {
   position: relative;
   background-color: #eee;
-  /*background-image: url('/images/coffee-bg.jpeg');*/
-  /*background-size: cover;
-  background-attachment: fixed;*/
+  min-height: 300px;
+  padding-bottom: 10px;
 
   @media screen and (min-width: 560px) {
     padding-top: 2rem;
-
+    min-height: 700px;
+    padding-bottom: 50px;
   }
 
   &__greeting {
     margin-left: 20px;
     font-size: 1.35rem;
+    text-align: center;
+    font-weight: 200;
     @media screen and (min-width: 560px) {
+      text-align: left;
       font-size: 1.75rem;
       font-weight: 250;
+      &-single{
+        text-align: center;
+      }
     }
   }
 
@@ -24,6 +30,7 @@
     font-size: 1.15rem;
 
     &-error {
+      margin-left: 20px;
       color: red;
     }
 

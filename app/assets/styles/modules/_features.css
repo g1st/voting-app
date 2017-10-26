@@ -1,8 +1,8 @@
 .features {
   text-align: center;
+  background: #a5c4f7;
 
   &__one{
-    background: yellow;
     padding: 20px;
 
     &-text {
@@ -13,7 +13,6 @@
   }
 
   &__two{
-    background: green;
     padding: 20px;
 
     &-text {
@@ -24,7 +23,6 @@
   }
 
   &__three{
-    background: red;
     padding: 20px;
 
     &-text {
@@ -36,7 +34,11 @@
 
   @media screen and (min-width: 560px) {
     display: flex;
-    background: lightgrey;
+    background: #a5c4f7;
+    /*background-image: url('/images/bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;*/
     height: 300px;
     align-items: center;
 

@@ -2,7 +2,8 @@ const container = document.getElementById('polls-container');
 
 const listPolls = (data, callback) => {
   data.forEach((poll) => {
-    container.innerHTML += '<canvas id="' + poll._id +  '" width="420" height="420"></canvas><div id="view' + poll._id + '" class="poll_view"><a href="/polls/' + poll._id + '">View</a></div>';
+    // container.innerHTML += '<canvas id="' + poll._id +  '" width="420" height="420"></canvas><div id="view' + poll._id + '" class="poll_view"><a href="/polls/' + poll._id + '">View</a></div>';
+    container.innerHTML += '<div class="flex-container__list"><div class="chart__title">' + poll.title + '</div><canvas id="' + poll._id +  '" width="420" height="420"></canvas><div id="view' + poll._id + '" class="chart__view"><a href="/polls/' + poll._id + '">View</a></div>';
   });
   callback(data);
 };
@@ -56,7 +57,7 @@ const populateChart = (data) => {
         }],
       },
       options: {
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false,
       },
     });

@@ -8,6 +8,7 @@
     "features"
     "footer";
   margin: 0 auto;
+  max-width: 1600px;
 
   &__header {
     grid-area: header;
@@ -27,6 +28,10 @@
     grid-area: footer;
     background-color: #333;
     color: #fff;
+  }
+
+  &__footer_info {
+    
   }
 
 }

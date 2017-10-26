@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  h3 To register please fill up the form below.
+  h3(class="main__greeting") To register please fill up the form below.
   if message
-    h3= message
-  form(id="", method="post", action="/oauth/signup")
+    h3(class="main__text-error")= message
+  form(class="form__login", method="post", action="/oauth/signup")
     | username
     input(type="text" name="username" value="Mickey")
     br

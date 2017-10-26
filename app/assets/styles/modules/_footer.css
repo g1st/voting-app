@@ -1,4 +1,17 @@
 .footer {
   text-align: center;
   padding: 20px;
+  height: 100px;
+
+  &__1{
+    
+  }
+
+  &__2{
+
+  }
+
+  &__3{
+
+  }
 }
