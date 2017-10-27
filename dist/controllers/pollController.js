@@ -80,6 +80,14 @@ exports.post_poll = function (req, res) {
         return console.error(err);
       });
     } else {
+      if (!req.user) {
+        return res.render('poll', {
+          title: 'Poll: ' + poll.title,
+          user: req.user,
+          poll: poll,
+          message: 'You need to register or login first'
+        });
+      }
       // check if user has not yet voted
       if (poll.votedIPs.some(function (votedIP) {
         return votedIP === IP;

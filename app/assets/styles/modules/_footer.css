@@ -1,17 +1,19 @@
 .footer {
   text-align: center;
   padding: 20px;
-  height: 100px;
+  min-height: 200px;
 
   &__1{
-    
+    grid-area: footer__1;
   }
 
   &__2{
+    grid-area: footer__2;
 
   }
 
   &__3{
+    grid-area: footer__3;
 
   }
 }

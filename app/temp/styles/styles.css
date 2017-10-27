@@ -533,18 +533,20 @@ a {
 .footer {
   text-align: center;
   padding: 20px;
-  height: 100px;
+  min-height: 200px;
 }
 
 .footer__1{
-    
+    grid-area: footer__1;
   }
 
 .footer__2{
+    grid-area: footer__2;
 
   }
 
 .footer__3{
+    grid-area: footer__3;
 
   }
 
@@ -722,8 +724,20 @@ a {
   }
 
 .grid__footer_info {
-    
+    display: block;
+
   }
+
+@media screen and (min-width: 560px) {
+
+.grid__footer_info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+      "footer__1 footer__2 footer__3"
+
+  }
+    }
 
 .features {
   text-align: center;

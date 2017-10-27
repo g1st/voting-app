@@ -82,6 +82,14 @@ exports.post_poll = (req, res) => {
         })
           .catch(err => console.error(err));
       } else {
+        if (!req.user) {
+          return res.render('poll', {
+            title: `Poll: ${poll.title}`,
+            user: req.user,
+            poll,
+            message: 'You need to register or login first',
+          });
+        }
         // check if user has not yet voted
         if (poll.votedIPs.some(votedIP => votedIP === IP)) {
           return res.render('poll', {

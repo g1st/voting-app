@@ -30,8 +30,17 @@
     color: #fff;
   }
 
+
   &__footer_info {
-    
+    display: block;
+
+    @media screen and (min-width: 560px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+      "footer__1 footer__2 footer__3";
+    }
+
   }
 
 }
