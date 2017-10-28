@@ -8,11 +8,14 @@
     "features"
     "footer";
   margin: 0 auto;
+  max-width: 1600px;
 
   &__header {
     grid-area: header;
     border: 1px solid;
     background: #333;
+    box-shadow: 0 8px 4px -4px rgba(182, 182, 182, 0.85);
+    z-index: 1;
   }
 
   &__main {
@@ -27,6 +30,20 @@
     grid-area: footer;
     background-color: #333;
     color: #fff;
+  }
+
+
+  &__footer_info {
+    display: block;
+
+    @media screen and (min-width: 560px) {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+      "footer__1 footer__2 footer__3";
+    }
+
   }
 
 }

@@ -2,8 +2,8 @@ extends layout
 
 block content
   if polls
-    h2 Your polls
-    div(id="polls-container" class="chart__size")
+    h2(class="main__greeting") Your polls
+    div(id="polls-container" class="flex-container")
   else
     h3 You dont have any polls.
   script(src="/scripts/chart.js" type="text/javascript")

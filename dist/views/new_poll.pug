@@ -1,15 +1,15 @@
 extends layout
 
 block content
-  h1 Create a new poll.
+  h1(class="main__greeting") Create a new poll
   div(class="form")
     form(id="", method="post", action="/polls/mine")
-      label Title:
+      label(class="main__text") Title:
       br
       input(type="text" name="title" placeholder="Enter poll title")
       br
       br
-      label Choices:
+      label(class="main__text") Choices:
       br
       input(type="text" name="choices" placeholder="Enter choices separated by comma")
       br

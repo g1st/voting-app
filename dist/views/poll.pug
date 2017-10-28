@@ -2,32 +2,33 @@ extends layout
 
 block content
   if deleted
-    h3= title
+    h3(class="main__text-error")= title
   else
     if message
-      h2= message
-    h1= poll.title
-    a(id="share" class="twitter-share-button" href="https://twitter.com/intent/tweet?text=" + poll.title + "&url=https://g1st-voting.herokuapp.com/polls/" + poll._id target="_blank") Tweet
-    div(class="polls-container")
+      h2(class="main__text-error")= message
+    h1(class="main__greeting main__greeting-single")= poll.title
+    div(class="polls-container wrapper")
       div(id="" class="vote")
-        form(id="", method="post", action="")
+        form(class="form__voting", method="post", action="")
           each val in poll.data 
             input(type="radio" name="vote" value=val._id required)
-            span= val.label
-            br
-          button(type="submit") Submit
-      canvas(id=poll.id width="420px" height="420px")
-      div(id="" class="add_option")
+            span(class="form__option")= val.label
+          br
+          button(class="buttons buttons__vote" type="submit") Vote
+      div(class="chart__single")
+        canvas(class="chart__single" id=poll.id width="420px" height="420px")
+      a(id="share" class="buttons buttons__tweet twitter-share-button" href="https://twitter.com/intent/tweet?text=" + poll.title + "&url=https://g1st-voting.herokuapp.com/polls/" + poll._id target="_blank") Tweet
+      div(id="" class="form form__add_option")
         form(id="", method="post", action="")
           label Don't like present options?
           br
           input(type="text" placeholder="Add your option" name="label" required)
           button(type="submit") Add
-        if (user && poll.creator == user.username)
-          div(id="" class="delete") 
-            form(id="", method="post", action="")
-              input(id="" type="hidden" name="delete" required="true" value=poll.id)
-              button(type=Submit) Delete
+      if (user && poll.creator == user.username)
+        div(id="" class="delete") 
+          form(id="", method="post", action="")
+            input(id="" type="hidden" name="delete" required="true" value=poll.id)
+            button(type=Submit class="buttons buttons__delete") Delete
     script(type="text/javascript").
       const poll = !{JSON.stringify(poll)};
     script(src="/scripts/singlechart.js" type="text/javascript")
