@@ -1,4 +1,3 @@
-// import express from 'express'; <= can go back to this after project is finished
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
