@@ -1,6 +1,6 @@
 # voting-app
 
-https://github.com/g1st/voting-app
+https://g1st-voting.herokuapp.com/
 
 # User stories:
 
